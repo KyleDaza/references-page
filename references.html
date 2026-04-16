@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic References | Physical Therapy & Rehabilitation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #ed8936;
+            --bg: #f7fafc;
+            --text: #2d3748;
+            --text-light: #718096;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .references-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .reference-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px 30px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s ease-out backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reference-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(237, 137, 54, 0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .reference-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-left-color: var(--accent);
+        }
+
+        .reference-card:hover::before {
+            opacity: 1;
+        }
+
+        .reference-card:nth-child(1) { animation-delay: 0.1s; }
+        .reference-card:nth-child(2) { animation-delay: 0.2s; }
+        .reference-card:nth-child(3) { animation-delay: 0.3s; }
+        .reference-card:nth-child(4) { animation-delay: 0.4s; }
+        .reference-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .reference-text {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--text);
+            position: relative;
+            z-index: 1;
+        }
+
+        .reference-text em {
+            font-style: italic;
+            color: var(--primary);
+        }
+
+        .reference-meta {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            background: #edf2f7;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .tag:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .tag.cited {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .tag.cited:hover {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .doi-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            gap: 5px;
+        }
+
+        .doi-link:hover {
+            color: #c05621;
+            transform: translateX(2px);
+        }
+
+        .doi-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            animation: fadeIn 1s ease-out 0.6s backwards;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .reference-card {
+                padding: 20px;
+            }
+
+            .reference-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>References</h1>
+            <p class="subtitle">Physical Therapy, Orthopedics & Rehabilitation</p>
+        </header>
+
+        <main class="references-list">
+            <article class="reference-card">
+                <p class="reference-text">
+                    Kisner, C., & Colby, L. A. (2017). <em>Therapeutic exercise: Foundations and techniques</em> (7th ed.). F.A. Davis Company.
+                </p>
+                <div class="reference-meta">
+                    <span class="tag">Textbook</span>
+                    <span class="tag">7th Edition</span>
+                </div>
+            </article>
+
+            <article class="reference-card">
+                <p class="reference-text">
+                    Magee, D. J. (2014). <em>Orthopedic physical assessment</em> (6th ed.). Elsevier Health Sciences.
+                </p>
+                <div class="reference-meta">
+                    <span class="tag">Textbook</span>
+                    <span class="tag">6th Edition</span>
+                </div>
+            </article>
+
+            <article class="reference-card">
+                <p class="reference-text">
+                    Mansouri, M., Sokhanguei, Y., & Sohaily, S. (2023). The effect of corrective exercise on pain referred to the jaw joint (TMJ) in elderly women with upper crossed syndrome. <em>Health Technology Assessment in Action</em>, 7(3).
+                </p>
+                <div class="reference-meta">
+                    <span class="tag">Journal Article</span>
+                    <span class="tag cited">Cited by: 1</span>
+                    <a href="https://doi.org/10.18502/htaa.v7i3.14210" target="_blank" class="doi-link">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        DOI: 10.18502/htaa.v7i3.14210
+                    </a>
+                </div>
+            </article>
+
+            <article class="reference-card">
+                <p class="reference-text">
+                    O'Sullivan, S. B., Schmitz, T. J., & Fulk, G. D. (2019). <em>Physical rehabilitation</em> (7th ed.). F.A. Davis Company.
+                </p>
+                <div class="reference-meta">
+                    <span class="tag">Textbook</span>
+                    <span class="tag">7th Edition</span>
+                </div>
+            </article>
+
+            <article class="reference-card">
+                <p class="reference-text">
+                    Snell, R. S. (2018). <em>Snell's clinical anatomy by regions</em> (10th ed.). Wolters Kluwer.
+                </p>
+                <div class="reference-meta">
+                    <span class="tag">Textbook</span>
+                    <span class="tag">10th Edition</span>
+                </div>
+            </article>
+        </main>
+
+        <footer>
+            <p>Academic Reference List • Generated April 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add subtle interaction on scroll
+        const cards = document.querySelectorAll('.reference-card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => observer.observe(card));
+
+        // Copy citation on click
+        cards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.closest('a')) {
+                    const text = this.querySelector('.reference-text').innerText;
+                    navigator.clipboard.writeText(text).then(() => {
+                        const originalBorder = this.style.borderLeftColor;
+                        this.style.borderLeftColor = '#48bb78';
+                        setTimeout(() => {
+                            this.style.borderLeftColor = '';
+                        }, 1000);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
